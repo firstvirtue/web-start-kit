@@ -1,0 +1,23 @@
+{
+  "name": "web-start-kit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "excute": "node dist/bundle.js",
+    "start": "npm run build -s && npm run execute -s"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "Vincent",
+  "license": "ISC",
+  "devDependencies": {
+    "handlebars": "^4.7.7",
+    "handlebars-webpack-plugin": "^2.2.1",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
