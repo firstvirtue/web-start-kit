@@ -3,14 +3,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isProduction = process.env.NODE_ENV === 'production';
-const isDevelopment = !isProduction;
 
 module.exports = {
-    mode: isProduction ? 'production' : 'development',
+    mode: 'production',
+    devtool: 'source-map',
     entry: {
         main: [
-            './src/index.js',
+            './src/prod.js',
             './src/assets/scss/main.scss'
         ],
     },
@@ -27,21 +26,11 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            // inject: false,
-            // minify: false,
-            // template: 'src/layout.hbs'
+            inject: false,
+            minify: false,
+            template: 'src/layout-prod.hbs',
+            templateParameters: require('./src/assets/data.json')
         }),
         new MiniCssExtractPlugin({ filename: 'style.css' }),
     ],
-    devServer: {
-        hot: true,
-        hotOnly: true,
-        contentBase: path.join(__dirname, './build'),
-        port: 3000,
-        open: true,
-        // inline: true,
-        progress: true,
-        // hotOnly: true,
-        // liveReload: true,
-    }
 };

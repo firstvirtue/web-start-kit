@@ -1,16 +1,12 @@
-import { render, destroy } from "./components/layout";
+import { render, destroy } from "./layout.js";
 import func from './assets/js/main';
 
-const options = {
-    name: 'world'
-};
-
-render(options);
+render();
 func();
 
 if(module.hot) {
     module.hot.accept();
     destroy();
-    render(options);
+    render();
     func();
 }
