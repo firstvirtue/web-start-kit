@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 
-(function() {
+export default function() {
     
-    gsap.to('#canv', { y: 200 });
+    gsap.to('#canv', { y: 120, x: 10 });
 
-})();
+};
