@@ -21,6 +21,11 @@ module.exports = {
         rules: [
             { test: /\.s[ac]ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'], exclude: /node_modules/ },
             { test: /\.hbs$/, loader: 'handlebars-loader', exclude: /node_modules/ },
+            { test: /\.(png|jpe?g|gif|mp4)$/i, loader: 'file-loader', options: {
+                name: '[name].[ext]',
+                outputPath: './assets/img',
+                publicPath: './assets/',
+            }},
         ]
     },
     plugins: [

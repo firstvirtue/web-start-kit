@@ -12,13 +12,17 @@ module.exports = {
         ],
     },
     output: {
-        path: path.resolve(__dirname, './build'),
+        path: path.resolve(__dirname, '/public'),
         filename: 'bundle.js',
     },
     module: {
         rules: [
             { test: /\.s[ac]ss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'], exclude: /node_modules/ },
             { test: /\.hbs$/, loader: 'handlebars-loader', exclude: /node_modules/ },
+            // { test: /\.(png|jpe?g|gif|mp4)$/i, use: 'file-loader?name=./src/assets/img/[name].[ext]' },
+            { test: /\.(mp4)$/i, loader: 'file-loader', options: {
+                name: '[name].[ext]'
+            }},
         ]
     },
     plugins: [
@@ -33,10 +37,11 @@ module.exports = {
     devServer: {
         hot: true,
         hotOnly: true,
-        contentBase: path.join(__dirname, './build'),
+        contentBase: path.join(__dirname, 'src'),
         port: 3000,
         open: true,
         progress: true,
         // inline: true,
+        // publicPath: '/',
     }
 };
