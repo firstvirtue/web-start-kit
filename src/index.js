@@ -1,4 +1,4 @@
-import { render, destroy } from "./layout.js";
+import { render, destroy } from "./layout-dev.js";
 import func from './assets/js/main';
 
 render();
