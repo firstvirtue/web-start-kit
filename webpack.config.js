@@ -1,22 +1,24 @@
 const path = require('path');
-const HandlearsPlugin = require('handlebars-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './build'),
         filename: 'bundle.js'
     },
     module: {
         rules: [
-            // { test: /\.hbs$/, loader: 'handlebars-loader'}
+            { test: /\.hbs$/, loader: 'handlebars-loader', exclude: /node_modules/ }
         ]
     },
     plugins: [
-        new HandlearsPlugin({
-            entry: path.join(process.cwd(), 'src', '*.hbs'),
-            output: path.join(process.cwd(), 'build', '[name].html')
-            // data: 
+        new HtmlWebpackPlugin({
+            inject: 'body',
+            hash: true,
+            minify: false,
+            title: 'qweqwe',
+            template: 'src/main.hbs'
         })
     ]
 };
